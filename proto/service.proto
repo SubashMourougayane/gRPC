@@ -15,6 +15,7 @@ service AddService {
 
   rpc Add(Request) returns (Response);
   rpc Multiply(Request) returns (Response);
-
+  rpc Subract(Request) returns (Response);
+  rpc Divide(Request) returns (Response);
 
 }

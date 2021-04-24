@@ -10,6 +10,8 @@ import (
 
 type server struct {}
 
+
+
 func main (){
 	listener, err := net.Listen("tcp", ":4040")
 
@@ -36,5 +38,17 @@ func (s *server) Add (ctx context.Context, request *proto.Request) (response *pr
 func (s *server) Multiply (ctx context.Context, request *proto.Request) (response *proto.Response, err error){
 	a, b := request.GetA(), request.GetB()
 	result := a * b
+	return &proto.Response{Result: result}, nil
+}
+
+func (s *server) Subract(ctx context.Context, request *proto.Request) (*proto.Response, error) {
+	a,b := request.GetA(), request.GetB()
+	result := a - b
+	return &proto.Response{Result: result}, nil
+}
+
+func (s *server) Divide(ctx context.Context, request *proto.Request) (*proto.Response, error) {
+	a,b := request.GetA(), request.GetB()
+	result := a / b
 	return &proto.Response{Result: result}, nil
 }
